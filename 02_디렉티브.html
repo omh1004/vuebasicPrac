@@ -25,19 +25,48 @@
         <h3>v-on</h3>
         <p>
             태그에 이벤트를 설정하는 것 <br>
-            
+            v-on:이벤트로 설정가능 <br>
+            v-on 을 생략하여 @이벤트명으로도 설정이 가능    
+            설정에 이벤트가 발생할때의 실행되는 함수인 이벤트핸들러를 설정
+            뷰인스턴스의 methods 속성에서 설정한 함수를 설정
         </p>
+        <h4>이벤트 등록하기</h4>
+        <button @click="basicEvent($event)">v-on으로 이벤트 설정</button>
+        <button v-on:dblclick="basicEvent($event)">클릭 고고 </button>
+
+        <h3>이벤트 핸들러 직접 설정하기</h3>
+        <input type="text" v-on:change="e=>{console.log(e);console.log(this)}">
+            
+        <h4>로직만 선언했을때, 이베트 객체 접근하기</h4>
+        <input type="text" @keyup="console.log($event); console.log($event.target.value); this.message=$event.target.value">
+        <h3>message : {{message}}</h3>
+
+
+        <h3>이벤트속성에 수식어 이용하기 </h3>
+        <input type="text" @keyup.space="(e)=>{console.log('space바 누름')}">
+        <input type="text" @keyup.enter="(e)=>{console.log('엔터를 눌렀다.')}">
+
+        <h3>a태그 이동 제어하기 (prevent이벤트 사용 )</h3>
+        <a href="/test" @click.prevent="console.log('이동');">a태그 이용 </a>
+
+        <p>
+            <button @click.right.prevent="e=>{console.log('우클릭')}">우클릭 이벤트 막기 </button>
+            <button @click.meta="e=>{console.log('커맨드 누르고 클릭 ');}">커맨드 클릭하기 </button>
+        </p>
+
     </div>
     <script>
         Vue.createApp({
             name:"App"
             ,data(){
                 return {
-
+                    massage:""
                 }
             }
             ,methods:{
-
+                basicEvent(e){
+                    console.log(e);
+                }
             }
         }).mount("#app")
     </script>
