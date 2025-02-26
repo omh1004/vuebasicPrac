@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디렉티브</title>
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+    <style>
+        .mystyle{
+            background-color: magenta;
+            color:lime;
+        }
+        .myFont{
+            font-size: 25px;
+            font-weight: bolder;
+        }
+        [v-cloak]{
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h3>v-on</h3>
+        <p>
+            태그에 이벤트를 설정하는 것 <br>
+            
+        </p>
+    </div>
+    <script>
+        Vue.createApp({
+            name:"App"
+            ,data(){
+                return {
+
+                }
+            }
+            ,methods:{
+
+            }
+        }).mount("#app")
+    </script>
+</body>
+</html>
