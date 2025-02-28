@@ -54,6 +54,44 @@
             <button @click.meta="e=>{console.log('커맨드 누르고 클릭 ');}">커맨드 클릭하기 </button>
         </p>
 
+        <h3>v-model</h3>
+        <p>
+            입력된 데이터와 연동할때 쓰는 디렉티브<br>
+            input태그에 입력값 데이터를 연결할 때 사용 
+        </p>
+        <input type="text" v-model="inputData">
+        <h3>{{inputData}}</h3>
+
+        <h3>type=checkbox데이터연동하기 </h3>
+        <p>
+            checkbox에 value 속성을 설정하지 않으면, 연동된 데이터의 boolean 값이 기본적으로 들어간다.
+            value속성을 설정하면, value값을 저장함 <br>
+            checkbox가 다중으로 설정이 되면 , 
+            연동된 데이터에 check된 태그의 value값이 배열로 저장, 연결되는 데이터 타입을 배열로 설정 
+        </p>
+        <input type="checkbox" name="basicCheck" v-model="basicCheck">
+        <h3>{{basicCheck}}</h3>
+        <h3>value값을 선언한 checkbox</h3>
+        <input type="checkbox" name="basicCheck2" v-model="basicCheck2" value="체크값">값 설정 
+        <h4>{{ basicCheck2}}</h4>
+
+
+        <div>
+            <h3>다중 checkbox를 데이터와 연결하기</h3>
+            <input type="checkbox" v-model="hobby" value="운동" id="hobby1"><label for="hobby1">운동</label>
+            <input type="checkbox" v-model="hobby" value="독서" id="hobby2"><label for="hobby2">독서</label>
+            <input type="checkbox" v-model="hobby" value="음악" id="hobby3"><label for="hobby3">음악</label>
+            <input type="checkbox" v-model="hobby" value="영화" id="hobby4"><label for="hobby4">영화</label>
+            <input type="checkbox" v-model="hobby" value="댄스" id="hobby5"><label for="hobby5">댄스</label>
+            <div>
+               <h4>선택한 취미</h4>
+               <p>{{hobby.join(',')}}</p>
+               <ul>
+                    <li v-for="(v,i) in hobby">{{ v}}</li>
+               </ul>
+            </div>
+        </div>
+
     </div>
     <script>
         Vue.createApp({
@@ -61,6 +99,11 @@
             ,data(){
                 return {
                     massage:""
+                    ,inputData:""
+                    ,basicCheck:""
+                    ,basicCheck2:[]
+                    ,hobby:[]
+                    ,
                 }
             }
             ,methods:{
